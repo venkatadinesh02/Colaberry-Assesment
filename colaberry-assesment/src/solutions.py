@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import numpy as np
 from model import Weather, WeatherStatistics, Session, engine
 from datetime import datetime
 
@@ -30,6 +31,13 @@ def extract_data(folder_path):
             combined_df = pd.concat([combined_df, df], ignore_index=True)
     # Convert 'date' column to datetime format
     combined_df["date"] = pd.to_datetime(combined_df["date"], format="%Y%m%d")
+
+    # Replace -9999 with NaN (null) in specified columns
+    combined_df.replace(
+        {"max_temp": -9999, "min_temp": -9999, "precipitation_amount": -9999},
+        np.nan,
+        inplace=True
+    )
     return combined_df
 
 
