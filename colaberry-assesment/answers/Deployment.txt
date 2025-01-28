@@ -1,0 +1,12 @@
+Deployment
+Q. Assume you are asked to get your code running in the cloud using AWS. What tools and AWS services would you use to deploy the API, database, and a scheduled version of your data ingestion code? Write up a description of your approach ?
+
+1. API Deployment
+Use AWS Elastic Beanstalk to host the Flask API with auto-scaling and load balancing.
+Set up a custom domain via Amazon Route 53 and enable HTTPS using AWS Certificate Manager.
+2. Database Deployment
+Host the PostgreSQL database on Amazon RDS with multi-AZ for high availability and automated backups.
+Secure RDS access with a VPC security group and restrict connections to Elastic Beanstalk instances.
+3. Scheduled Data Ingestion
+Use AWS Lambda for running ingestion jobs.
+Apache-Airflow will be one of the solution i would like for scheduled ingestion
